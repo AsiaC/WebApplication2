@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using WebApplication2.Models;
 using WebApplication2.Data;
@@ -40,11 +41,13 @@ namespace WebApplication2
                     builder => builder.AllowAnyOrigin()
                         .AllowAnyMethod()
                         .AllowAnyHeader()
-                        .AllowCredentials());
+                        //.AllowCredentials()
+                        );
             });
 
             services.AddScoped(typeof(IDataRepository<>), typeof(DataRepository<>));
-
+            services.AddMvc(option => option.EnableEndpointRouting = false);
+            //MvcOptions.EnableEndpointRouting = false;
             // In production, the Angular files will be served from this directory
             //services.AddSpaStaticFiles(configuration =>
             //{

@@ -11,9 +11,9 @@ using WebApplication2.Models;
 namespace WebApplication2.Controllers
 {
     [Produces("application/json")]
-    [Route("api/[controller]")]
+    [Route("api/[controller]")] //https://localhost:44370/api/BlogPosts
     [ApiController]
-    public class BlogPostsController : ControllerBase
+    public class BlogPostsController : ControllerBase 
     {
         private readonly BlogPostsContext _context;
         private readonly IDataRepository<BlogPost> _repo;
